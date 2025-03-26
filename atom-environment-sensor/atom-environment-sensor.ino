@@ -240,8 +240,6 @@ void loop() {
   Serial.print(bme.gas_resistance / 1000.0);
   Serial.println(" kΩ");
   
-  Serial.println("-----------------------------");
-  
   // Update LED based on different sensor readings
   CRGB temperatureColor = mapTemperatureToColor(bme.temperature);
   CRGB humidityColor = mapHumidityToColor(bme.humidity);

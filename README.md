@@ -29,3 +29,12 @@ Follow https://docs.m5stack.com/en/arduino/arduino_ide to get setup with Arduino
 ## Running
 
 Select your device in the Arduino IDE and upload the code. Open the Serial Monitor and set the baud rate to 115200. You should see sensor readings.
+
+```
+--- BME688 Sensor Readings ---
+Temperature: 22.87 °C
+Humidity: 35.23 %
+Pressure: 906.85 hPa
+Altitude: 924.05 m
+Gas Resistance: 137.49 kΩ
+```

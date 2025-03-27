@@ -106,7 +106,7 @@ const uint8_t DIGIT_PATTERNS[10][5][4] = {
      {0, 0, 0, 1},
      {1, 1, 1, 1}}};
 
-void displayNumber(int number)
+void displayNumber(int number, CRGB color)
 {
   // make sure we only have 1 digit
   int digit = number % 10;
@@ -117,7 +117,7 @@ void displayNumber(int number)
     {
       if (DIGIT_PATTERNS[digit][row][col])
       {
-        M5.dis.drawpix(row * 5 + col, CRGB::White);
+        M5.dis.drawpix(row * 5 + col, color);
       }
     }
   }
@@ -134,7 +134,7 @@ void clearDisplay()
   }
 }
 
-void displayBlank()
+void displayBlank(CRGB color)
 {
   for (int row = 0; row < 5; row++)
   {
@@ -142,7 +142,7 @@ void displayBlank()
     {
       if (BLANK_DIGIT_PATTERN[row][col])
       {
-        M5.dis.drawpix(row * 5 + col, CRGB::White);
+        M5.dis.drawpix(row * 5 + col, color);
       }
     }
   }
@@ -167,18 +167,19 @@ void displayFahrenheit(float temperature, int place)
   case 1:
     if (hundreds > 0)
     {
-      displayNumber(hundreds);
+      displayNumber(hundreds, CRGB::FireBrick);
     }
     else
     {
-      displayBlank();
+      displayBlank(CRGB::FireBrick);
     }
     break;
   case 2:
-    displayNumber(tens);
+    // Slightly vary color of 10s place to distinguish consecutive digits
+    displayNumber(tens, CRGB::Maroon);
     break;
   case 3:
-    displayNumber(ones);
+    displayNumber(ones, CRGB::FireBrick);
     break;
   }
 }

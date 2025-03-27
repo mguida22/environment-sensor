@@ -4,6 +4,7 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 
+const bool LOG_TO_UDP = true;           // Disable if you don't want to log over WiFi to the UDP server
 const char *ssid = "your_ssid";         // set to the SSID of your WiFi network
 const char *password = "your_password"; // set to the password of your WiFi network
 const char *udp_ip = "192.168.1.100";   // set to the IP where the ESP32 logger is running
@@ -218,9 +219,12 @@ CRGB mapPressureToColor(float pressure)
 // Log a message to the UDP server
 void udpLog(String msg)
 {
-  udp.beginPacket(udp_ip, udp_port);
-  udp.print(msg);
-  udp.endPacket();
+  if (LOG_TO_UDP)
+  {
+    udp.beginPacket(udp_ip, udp_port);
+    udp.print(msg);
+    udp.endPacket();
+  }
 }
 
 void setup()
@@ -229,24 +233,27 @@ void setup()
   M5.begin(true, false, true);
   M5.dis.clear();
 
-  // Initialize WiFi
-  WiFi.begin(ssid, password);
-  bool blinkOn = true;
-  while (WiFi.status() != WL_CONNECTED)
+  if (LOG_TO_UDP)
   {
-    delay(500);
-    if (blinkOn)
+    // Initialize WiFi
+    WiFi.begin(ssid, password);
+    bool blinkOn = true;
+    while (WiFi.status() != WL_CONNECTED)
     {
-      M5.dis.drawpix(3, CRGB::Orange);
+      delay(500);
+      if (blinkOn)
+      {
+        M5.dis.drawpix(3, CRGB::Orange);
+      }
+      else
+      {
+        M5.dis.drawpix(3, CRGB::Black);
+      }
+      blinkOn = !blinkOn;
+      Serial.print(".");
     }
-    else
-    {
-      M5.dis.drawpix(3, CRGB::Black);
-    }
-    blinkOn = !blinkOn;
-    Serial.print(".");
+    Serial.println("Connected to WiFi");
   }
-  Serial.println("Connected to WiFi");
 
   // Initialize serial communication
   Serial.begin(115200);

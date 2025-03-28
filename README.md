@@ -1,4 +1,7 @@
-<img src="https://github.com/user-attachments/assets/9ba798cd-5b05-4b91-8be9-79a7a77e9f15" alt="robot with sensor 1" width="425"/> <img src="https://github.com/user-attachments/assets/18f8f003-e607-4c0a-b3bf-f71097e73d23" alt="robot with sensor 2" width="425"/> 
+ <p float="left">
+  <img src="https://github.com/user-attachments/assets/9ba798cd-5b05-4b91-8be9-79a7a77e9f15" alt="robot with sensor 1" width="48%"/>
+  <img src="https://github.com/user-attachments/assets/18f8f003-e607-4c0a-b3bf-f71097e73d23" alt="robot with sensor 2" width="48%"/>
+</p>
 
 # M5 Atom Matrix + BME688
 

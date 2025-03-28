@@ -1,3 +1,5 @@
+<img src="https://github.com/user-attachments/assets/9ba798cd-5b05-4b91-8be9-79a7a77e9f15" alt="robot with sensor 1" width="425"/> <img src="https://github.com/user-attachments/assets/18f8f003-e607-4c0a-b3bf-f71097e73d23" alt="robot with sensor 2" width="425"/> 
+
 # M5 Atom Matrix + BME688
 
 Read environment data (temperature, humidity, pressure, altitude and gas resistance) using a M5 Atom Matrix wired up to a BME688 sensor.
